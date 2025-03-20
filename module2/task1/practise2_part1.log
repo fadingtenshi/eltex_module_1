@@ -1,0 +1,89 @@
+1) ssh-keygen
+
+2) ssh-copy-id -i ~/.ssh/id_rsa.pub root@172.16.9.188
+
+3) cat .ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDXekqIPjN2LQIY4vR5rJYaISm6rJacbkpqZK2lEFjPHtlxM+IAI4vYBNz4Pds6FRRWhOui/Iw59MXTqBqWvNoXO/YyT2wt+PrzmThssdQPKDjpObCgMLAQhhF1l+/477Cy5r9xKNVMd1IFEXW3loq9gDcp9zYdF0bunmdK/O6o1Ony8boIIbyLLLiG7JfgclVE8k0SgQS7UdCfzdsxVLq2d4kTTm6jPeIiyuHJ/6pfPr8dJ9K2qWV6XJAlC6KLQPNQYR5kvlbz+mcmGodWz/3tmhYcMPZZw1+On4jm6o+7C1ra2nIyOzV8Fh3xGpn5WqeWqnTTZycKjcp6ZYTCqM0xPBDBczcVj0Sb9PP3whgZdQ9TA1J44lwQ/yLCHagsUbwS5qz3ipS1IpuduV9zMjZQHqzfC4XI+rHBH3OQrl9FtG2naTsIRywr2zX8kaqfHlXsMOQeC8G8Vy24J6c62fRvP9DEe00DvWB+6aKBiGQARTGNIVS05C693QWMi3ltv9k= eltex-pg1-v14@eltex
+ssh root@172.16.9.188
+cat .ssh/authorized_key
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDXekqIPjN2LQIY4vR5rJYaISm6rJacbkpqZK2lEFjPHtlxM+IAI4vYBNz4Pds6FRRWhOui/Iw59MXTqBqWvNoXO/YyT2wt+PrzmThssdQPKDjpObCgMLAQhhF1l+/477Cy5r9xKNVMd1IFEXW3loq9gDcp9zYdF0bunmdK/O6o1Ony8boIIbyLLLiG7JfgclVE8k0SgQS7UdCfzdsxVLq2d4kTTm6jPeIiyuHJ/6pfPr8dJ9K2qWV6XJAlC6KLQPNQYR5kvlbz+mcmGodWz/3tmhYcMPZZw1+On4jm6o+7C1ra2nIyOzV8Fh3xGpn5WqeWqnTTZycKjcp6ZYTCqM0xPBDBczcVj0Sb9PP3whgZdQ9TA1J44lwQ/yLCHagsUbwS5qz3ipS1IpuduV9zMjZQHqzfC4XI+rHBH3OQrl9FtG2naTsIRywr2zX8kaqfHlXsMOQeC8G8Vy24J6c62fRvP9DEe00DvWB+6aKBiGQARTGNIVS05C693QWMi3ltv9k= eltex-pg1-v14@eltex
+4) useradd -m -d /home/user1 -s /bin/bash -p 1234 user1
+
+5) adduser user2
+adduser user3
+
+6) usermod -s /usr/sbin/nologin user3
+su user3
+su -s /bin/bash user3
+
+7) groupadd -g 1006 newgroup
+usermod -G newgroup user1
+usermod -G newgroup user2
+usermod -G newgroup user3
+
+8-9) mkdir /opt/share
+chgrp newgroup /opt/share
+chmod 2077 /opt/share
+
+10) echo /home/user1/.bashrc >> umask 004
+
+
+11) su user1 -c "touch /opt/share/user1.txt"
+su user2 -c "touch /opt/share/user2.txt"
+su user3 -c "touch /opt/share/user3.txt" #user not available
+su user1 -c "rm /opt/share/user2.txt"
+su user2 -c "rm /opt/share/user1.txt"
+
+12) chmod 1077 /opt/share
+su user1 -c "touch /opt/share/user1.txt"
+su user2 -c "touch /opt/share/user2.txt"
+su user3 -c "touch /opt/share/user3.txt" #user not available
+su user1 -c "rm /opt/share/user2.txt"
+rm: cannot remove '/opt/share/user2.txt': Operation not permitted
+su user2 -c "rm /opt/share/user1.txt"
+rm: cannot remove '/opt/share/user1.txt': Operation not permitted
+
+13) echo "user1 ALL=(ALL) NOPASSWD: /bin/dmesg" | sudo tee /etc/sudoers.d/user1
+echo -e '#!/bin/bash\n/bin/dmesg' | sudo tee /usr/local/bin/suid_dmesg
+sudo chmod +x /usr/local/bin/suid_dmesg
+sudo chown root:user2 /usr/local/bin/suid_dmesg
+sudo chmod 4750 /usr/local/bin/suid_dmesg
+
+14) sudo chage -M 10 user1
+sudo chage -M 10 user2
+sudo chage -M 10 user3
+
+15) echo "Nikita Pavlovsky" >> /etc/motd
+
+16) rsync -av /etc/ /root/etcbackup
+
+17) tar -cjf etcbackupbzip2.tar.bz ./etcbackup/
+tar -czf etcbackupgzip.tar.gz ./etcbackup/
+tar -cf etcbackup.tar ./etcbackup/
+7z a ./etcbackup7zip.tar.7z etcbackup.tar
+du -h ./*.tar*
+476K    ./etcbackup7zip.tar.7z
+548K    ./etcbackupbzip2.tar.bz
+584K    ./etcbackupgzip.tar.gz
+3.4M    ./etcbackup.tar
+
+18) date >> /etc/motd
+rsync -av /etc/ /root/etcbackup/
+gzip -d etcbackupgzip.tar.gz
+tar --append -f etcbackupgzip.tar -C /etc/motd
+gzip etcbackupgzip.tar
+
+19) mkdir bz2_temp
+tar -xjf etcbackupbzip2.tar.bz2 -C /root/bz2_temp/
+diff -r etcbackup/motd bz2_temp/etcbackup/motd
+2d1
+< Mon Mar 17 10:21:33 AM UTC 2025
+
+20) mkdir etc_backup_gzip etc_backup_7zip
+tar -xzf /root/etcbackupgzip.tar.gz -C /root/etc_backup_gzip/
+7z x etcbackup7zip.tar.7z -o/root/etc_backup_7zip/
+cd /root/etc_backup_7zip
+tar -xf etcbackup.tar
+diff /root/etc_backup_gzip/etcbackup/motd /root/etc_backup_7zip/etcbackup/motd # equals
+
+
