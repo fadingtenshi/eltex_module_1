@@ -1,0 +1,417 @@
+1) screen -S eltex-pg1-v14_part2 -d -m vim ${USER}_part.log
+screen -r eltex-pg1-v14_part2
+
+2-3) eltex-pg1-v14@eltex:~$ ls
+ls           lsb_release  lsinitramfs  lslocks      lsmod        lspci        
+lsattr       lscpu        lsipc        lslogins     lsns         lsusb        
+lsblk        lsfd         lsirq        lsmem        lsof
+
+4-5) eltex-pg1-v14@eltex:~$ echo $HIST
+$HISTCMD       $HISTCONTROL   $HISTFILE      $HISTFILESIZE  $HISTSIZE
+
+6) eltex-pg1-v14@eltex:~$ echo $HISTFILESIZE
+2000
+
+7) eltex-pg1-v14@eltex:~$ ls .
+./                           .bashrc                      .lesshst
+../                          .config/                     .log
+.bash_history                .eltex-pg1-v14_part.log.swo  .profile
+.bash_logout                 .eltex-pg1-v14_part.log.swp  .viminfo
+
+8) export HISTTIMEFORMAT='%d/%m/%y %T'
+
+9) export PROMPT_COMMAND="history -a"
+
+10) eltex-pg1-v14@eltex:~$ export DATE=$(date +"%d/%m/%y")
+eltex-pg1-v14@eltex:~$ echo $DATE
+06/03/25
+
+11) eltex-pg1-v14@eltex:~$ export TIME=$(date +"%T")
+eltex-pg1-v14@eltex:~$ echo $TIME
+17:30:57
+
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) 
+12) eltex-pg1-v14@eltex:~$ export DATE_TIME="$DATE $TIME"
+eltex-pg1-v14@eltex:~$ echo $DATE_TIME
+06/03/25 17:30:57
+
+13) eltex-pg1-v14@eltex:~$ ls /bin/*[0-9]* /sbin/*[0-9]*
+/bin/b2sum                      /bin/ping6           /bin/x86_64
+/bin/base32                     /bin/pl2pm           /sbin/dumpe2fs
+/bin/base64                     /bin/pod2html        /sbin/e2freefrag
+/bin/bunzip2                    /bin/pod2man         /sbin/e2fsck
+/bin/bzip2                      /bin/pod2text        /sbin/e2image
+/bin/bzip2recover               /bin/pod2usage       /sbin/e2label
+/bin/cpan5.36-x86_64-linux-gnu  /bin/py3clean        /sbin/e2mmpstatus
+/bin/diff3                      /bin/py3compile      /sbin/e2scrub
+/bin/enc2xs                     /bin/py3versions     /sbin/e2scrub_all
+/bin/grub-menulst2cfg           /bin/pydoc3          /sbin/e2undo
+/bin/grub-mkpasswd-pbkdf2       /bin/pydoc3.11       /sbin/e4crypt
+/bin/grub-syslinux2cfg          /bin/pygettext3      /sbin/e4defrag
+/bin/h2ph                       /bin/pygettext3.11   /sbin/fsck.ext2
+/bin/h2xs                       /bin/python3         /sbin/fsck.ext3
+/bin/i386                       /bin/python3.11      /sbin/fsck.ext4
+/bin/linux32                    /bin/sha1sum         /sbin/killall5
+/bin/linux64                    /bin/sha224sum       /sbin/mke2fs
+/bin/md5sum                     /bin/sha256sum       /sbin/mkfs.ext2
+/bin/md5sum.textutils           /bin/sha384sum       /sbin/mkfs.ext3
+/bin/pdb3                       /bin/sha512sum       /sbin/mkfs.ext4
+/bin/pdb3.11                    /bin/ssh-argv0       /sbin/resize2fs
+/bin/perl5.36.0                 /bin/systemd-id128   /sbin/tune2fs
+/bin/perl5.36-x86_64-linux-gnu  /bin/traceroute6     /sbin/update-grub2
+/bin/ping4                      /bin/traceroute6.db
+
+14) eltex-pg1-v14@eltex:~$ set PS1="\u@\h:$(date +"%H:%M")> "
+eltex-pg1-v14@eltex:17:42> 
+
+15) eltex-pg1-v14@eltex:~$ export PS1="\u@\h:$(date +"%H:%M")> "
+eltex-pg1-v14@eltex:17:42> 
+
+16) eltex-pg1-v14@eltex:~$ mkdir $(date +"%Y-"){01..12}
+eltex-pg1-v14@eltex:~$ ls
+2025-01  2025-03  2025-05  2025-07  2025-09  2025-11  eltex-pg1-v14_part.log
+2025-02  2025-04  2025-06  2025-08  2025-10  2025-12  report_part1.txt
+
+
+
+

@@ -1,0 +1,47 @@
+1) touch ${USER}_part3.log
+
+2) mkdir -p D1/D2/D3
+
+3) cd D1/D2/ && touch file.txt
+
+4) echo "destroyed" >> file.txt
+
+5) ln -s ../file.txt file_sym.txt
+ln ../file.txt file_hard.txt
+
+6) ls -i && ls -i ../
+1048679 file_hard.txt  1048675 file_sym.txt
+1048678 D3  1048679 file.txt
+
+7) mv file.txt ../
+
+8) cat file_sym.txt
+cat: file_sym.txt: No such file or directory
+cat file_hard.txt
+destroyed
+
+Рабочей оказалась жёсткая ссылка, потому что это по своей сути указатель на уже существующий файл на диске, который имеет свой уникальный индексный дескриптор в ФС. Это видно из задания 6.
+
+9) rm -rf D2/
+
+10) find / -type f -size +50M 2>/dev/null 1>${USER}_part3_gt50M.log
+
+11-12) find ~ -type f -mtime -1
+/home/eltex-pg1-v14/.viminfo
+/home/eltex-pg1-v14/.eltex-pg1-v14_part3.log.swp
+/home/eltex-pg1-v14/.lesshst
+/home/eltex-pg1-v14/D1/file.txt
+/home/eltex-pg1-v14/eltex-pg1-v14_part3.log
+/home/eltex-pg1-v14/.bash_history
+/home/eltex-pg1-v14/eltex-pg1-v14_part3_gt50M.log
+/home/eltex-pg1-v14/.eltex-pg1-v14_part3.log.swo
+
+13) which find
+/usr/bin/find
+
+14) file /usr/bin/find
+/usr/bin/find: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=5545a6c7162d325fbe5ffabcbfe4e5521b66ce70, for GNU/Linux 3.2.0, stripped
+
+15) file /boot/initrd.img*
+/boot/initrd.img-6.1.0-27-amd64: ASCII cpio archive (SVR4 with no CRC)
+/boot/initrd.img-6.1.0-31-amd64: ASCII cpio archive (SVR4 with no CRC)
