@@ -1,0 +1,110 @@
+
+1) su user1
+
+2) ps -eLf | awk '{print $6}' | awk '$1 > 1 && $1 != "NLWP"' | wc -l
+41
+
+3) top
+f
+Up/Dn
+space on VIRT, RES, SHR
+space on RUSER
+Right on RUSER and place after USER
+enter
+q
+top - 17:01:03 up 8 days, 21:01,  5 users,  load average: 0.00, 0.00, 0.00
+Tasks: 122 total,   1 running, 121 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.1 us,  0.1 sy,  0.0 ni, 99.7 id,  0.1 wa,  0.0 hi,  0.0 si,  0.0 st 
+MiB Mem :   3916.0 total,   2889.0 free,    467.8 used,    805.4 buff/cache     
+MiB Swap:   3185.0 total,   3185.0 free,      0.0 used.   3448.2 avail Mem 
+
+    PID USER     RUSER     PR  NI S  %CPU  %MEM     TIME+ COMMAND                                                                                                                            
+      1 root     root      20   0 S   0.0   0.3   0:09.60 systemd                                                                                                                            
+      2 root     root      20   0 S   0.0   0.0   0:00.05 kthreadd                                                                                                                           
+      3 root     root      20   0 S   0.0   0.0   0:00.00 pool_workqueue_release                                                                                                             
+      4 root     root       0 -20 I   0.0   0.0   0:00.00 kworker/R-rcu_g                                                                                                                    
+      5 root     root       0 -20 I   0.0   0.0   0:00.00 kworker/R-rcu_p                                                                                                                    
+      6 root     root       0 -20 I   0.0   0.0   0:00.00 kworker/R-slub_                                                                                                                    
+      7 root     root       0 -20 I   0.0   0.0   0:00.00 kworker/R-netns                                                                                                                    
+     10 root     root       0 -20 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri                                                                                                        
+     12 root     root       0 -20 I   0.0   0.0   0:00.00 kworker/R-mm_pe                                                                                                                    
+     13 root     root      20   0 I   0.0   0.0   0:00.00 rcu_tasks_kthread                                                                                                                  
+     14 root     root      20   0 I   0.0   0.0   0:00.00 rcu_tasks_rude_kthread                                                                                                             
+     15 root     root      20   0 I   0.0   0.0   0:00.00 rcu_tasks_trace_kthread                                                                                                            
+     16 root     root      20   0 S   0.0   0.0   0:00.10 ksoftirqd/0                                                                                                                        
+     17 root     root      20   0 I   0.0   0.0   0:05.97 rcu_preempt                                                                                                                        
+     18 root     root      rt   0 S   0.0   0.0   0:02.54 migration/0                                                                                                                        
+     19 root     root     -51   0 S   0.0   0.0   0:00.00 idle_inject/0                                                                                                                      
+     20 root     root      20   0 S   0.0   0.0   0:00.00 cpuhp/0                                                                                                                            
+     21 root     root      20   0 S   0.0   0.0   0:00.00 cpuhp/1                                                                                                                            
+     22 root     root     -51   0 S   0.0   0.0   0:00.00 idle_inject/1                                                                                                                      
+     23 root     root      rt   0 S   0.0   0.0   0:02.65 migration/1                                                                                                                        
+     24 root     root      20   0 S   0.0   0.0   0:00.08 ksoftirqd/1                                                                                                                        
+     26 root     root       0 -20 I   0.0   0.0   0:01.14 kworker/1:0H-kblockd                                                                                                               
+     27 root     root      20   0 S   0.0   0.0   0:00.00 kdevtmpfs                                                                                                                          
+     28 root     root       0 -20 I   0.0   0.0   0:00.00 kworker/R-inet_
+
+4) screen
+ctrl+a c
+ctrl+a n
+passwd
+ctrl+a n
+
+5) top
+o
+RUSER=user1
+  26787 user1    user1     20   0 S   0.0   0.1   0:00.00 bash                                                                                                                               
+  26844 user1    user1     20   0 S   0.0   0.1   0:00.00 screen                                                                                                                             
+  26845 user1    user1     20   0 S   0.0   0.1   0:00.00 screen                                                                                                                             
+  26846 user1    user1     20   0 S   0.0   0.1   0:00.00 bash                                                                                                                               
+  26968 user1    user1     20   0 S   0.0   0.1   0:00.00 bash                                                                                                                               
+  26976 root     user1     20   0 S   0.0   0.1   0:00.00 passwd                                                                                                                             
+  26977 user1    user1     20   0 R   0.0   0.1   0:00.08 top   
+
+kill -15 26976 # nothing
+kill -2 26976 # nothing
+kill -3 26976 # nothing
+kill -9 26976 # killed
+
+passwd
+Changing password for user1.
+Current password: Killed
+
+6) vim ~/file_task3.txt
+Ctrl-Z
+"~/file_task3.txt" [New]                                                                                                                                          ^Z        0,0-1         All
+
+[1]+  Stopped                 vim ~/file_task3.txt
+
+7) sleep 600
+^Z
+[3]+  Stopped                 sleep 600
+
+jobs
+[1]   Stopped                 vim ~/file_task3.txt  (wd: /root)
+[2]-  Stopped                 vim ~/file_task3.txt
+[3]+  Stopped                 sleep 600
+
+8) bg %3
+[3]+ sleep 600 &
+
+9) renice 10 -p $(pgrep sleep)
+27059 (process ID) old priority 0, new priority 10
+
+10) ps -o pid,ni,cmd -p $(pgrep sleep)
+    PID  NI CMD
+  27059  10 sleep 600
+
+11) fg %2
+
+12) kill -15 $(pgrep sleep)
+jobs
+[1]+  Stopped                 vim ~/file_task3.txt  (wd: /root)
+[2]-  Terminated              sleep 600
+
+13) trap 'echo "Меня голыми руками не возьмёшь!"' SIGINT SIGQUIT
+kill -2 $$
+Меня голыми руками не возьмёшь!
+kill -3 $$
+Меня голыми руками не возьмёшь!
+
